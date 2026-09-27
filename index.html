@@ -46,6 +46,17 @@
   .btn-list{flex:0 0 24%;background:var(--dark);color:#fff}
   .btn:active{transform:scale(.96);opacity:.85}
   .btn-theme{flex:0 0 48px;background:#efece4;color:#1c1c22;font-size:18px;padding:0}
+  .btn-print{flex:0 0 90px;background:var(--gold);color:#26200c;font-size:14px;padding:0 10px}
+  .btn-print:active{transform:scale(.96);opacity:.85}
+  @media print{
+    @page{size:A4 portrait;margin:0}
+    html,body{background:#fff!important}
+    header,.hint,.bar,.toast,.modal{display:none!important}
+    #stage{padding:0!important;display:block!important}
+    #frame{width:100%!important;max-width:none!important;box-shadow:none!important}
+    .fld{background:transparent!important;box-shadow:none!important}
+    .cbx{background:transparent!important}
+  }
   .toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--dark);color:#fff;
     padding:11px 18px;border-radius:999px;font-size:13px;font-weight:600;z-index:70;opacity:0;transition:opacity .2s;pointer-events:none}
   .toast.show{opacity:1}
@@ -138,6 +149,7 @@
 
 <div class="bar">
   <button class="btn btn-theme" id="themeBtn" onclick="temaDegistir()" aria-label="Karanlık/Aydınlık mod">🌙</button>
+  <button type="button" class="btn btn-print" onclick="yazdir()">🖨️ YAZDIR</button>
   <button class="btn btn-g" onclick="temizle(true)">Temizle</button>
   <button class="btn btn-list" onclick="kayitlarAc()">Kayıtlar <span id="cnt"></span></button>
   <button class="btn btn-main" id="saveBtn" onclick="kaydet()">KAYDET → Galeri</button>
@@ -153,6 +165,10 @@ function temaUygula(t){
   document.documentElement.setAttribute("data-theme",t);
   const btn=document.getElementById("themeBtn");
   if(btn) btn.textContent = t==="dark" ? "☀️" : "🌙";
+}
+function yazdir(){
+  window.focus();
+  setTimeout(()=>window.print(),50);
 }
 function temaDegistir(){
   const simdi=document.documentElement.getAttribute("data-theme");
