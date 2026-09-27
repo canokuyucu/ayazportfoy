@@ -22,9 +22,19 @@
   header .no b{display:block;color:var(--gold);font-size:14px}
   .hint{background:#3a3a42;color:#d7d5cd;font-size:12px;text-align:center;padding:7px 10px}
   /* Form sahnesi */
-  #stage{padding:14px 8px 120px;display:flex;justify-content:center}
-  #frame{position:relative;width:100%;max-width:760px;aspect-ratio:1414/2000;
+  #stage{padding:14px 8px 120px;display:flex;justify-content:center;width:100%;box-sizing:border-box}
+  #frame{position:relative;width:min(100%,760px);max-width:760px;aspect-ratio:1414/2000;
     background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.4)}
+  @media (max-width:600px){
+    #stage{padding:8px 4px 110px}
+    #frame{width:100%;max-width:none;box-shadow:0 3px 14px rgba(0,0,0,.25)}
+  }
+  @media (min-width:601px) and (max-width:1200px){
+    #frame{width:min(92vw,760px)}
+  }
+  @media (min-width:1201px){
+    #frame{width:min(760px,52vw)}
+  }
   #frame img{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none;-webkit-user-drag:none}
   .fld{position:absolute;border:0;background:rgba(200,161,74,.10);color:var(--pen);
     font-weight:700;padding:0 4px;line-height:1;font-family:inherit;outline:none;
