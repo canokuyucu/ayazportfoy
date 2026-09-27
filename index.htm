@@ -46,7 +46,7 @@
   .btn-list{flex:0 0 24%;background:var(--dark);color:#fff}
   .btn:active{transform:scale(.96);opacity:.85}
   .btn-theme{flex:0 0 48px;background:#efece4;color:#1c1c22;font-size:18px;padding:0}
-  .btn-print{flex:0 0 48px;background:#e8e4d8;color:#1c1c22;font-size:18px;padding:0}
+  .btn-print{flex:0 0 82px;background:#e8e4d8;color:#1c1c22;font-size:14px;padding:0 10px}
   @media print{
     @page{size:A4 portrait;margin:0}
     html,body{background:#fff!important}
@@ -148,7 +148,7 @@
 
 <div class="bar">
   <button class="btn btn-theme" id="themeBtn" onclick="temaDegistir()" aria-label="Karanlık/Aydınlık mod">🌙</button>
-  <button class="btn btn-print" onclick="yazdir()" aria-label="Yazdır">🖨️</button>
+  <button class="btn btn-print" onclick="yazdir()" aria-label="Yazdır">🖨️ YAZDIR</button>
   <button class="btn btn-g" onclick="temizle(true)">Temizle</button>
   <button class="btn btn-list" onclick="kayitlarAc()">Kayıtlar <span id="cnt"></span></button>
   <button class="btn btn-main" id="saveBtn" onclick="kaydet()">KAYDET → Galeri</button>
@@ -166,7 +166,16 @@ function temaUygula(t){
   if(btn) btn.textContent = t==="dark" ? "☀️" : "🌙";
 }
 function yazdir(){
-  window.print();
+  try{
+    const v=topla();
+    if(!v.mulk_sahibi && !v.adres && !v.telefon && !v.mahalle){
+      toast("Önce formu doldur");
+      return;
+    }
+    window.print();
+  }catch(e){
+    window.print();
+  }
 }
 function temaDegistir(){
   const simdi=document.documentElement.getAttribute("data-theme");
