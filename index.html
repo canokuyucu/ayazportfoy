@@ -131,7 +131,7 @@
 
 <div id="stage">
   <div id="frame">
-    <img id="formImg" src="form.png" alt="Ayaz Emlak Portföy Formu">
+    <img id="formImg" src="form.png" alt="AYAZ EMLAK Portföy Formu">
     <!-- alanlar JS ile eklenir -->
   </div>
 </div>
@@ -269,7 +269,7 @@ const SEQ_KEY="ayaz_sayac", DB_KEY="ayaz_portfoyler";
 let aktifNo;
 let duzenleIdx=null; // null=yeni kayıt, sayı=düzenlenen kaydın index'i
 function yeniNo(){const y=new Date().getFullYear();const s=JSON.parse(localStorage.getItem(SEQ_KEY)||"{}");
-  return "AE-P-"+y+"-"+String((s[y]||0)+1).padStart(4,"0");}
+  return "AYAZ-P-"+y+"-"+String((s[y]||0)+1).padStart(4,"0");}
 function noOnayla(no){const y=no.split("-")[2],n=+no.split("-")[3];const s=JSON.parse(localStorage.getItem(SEQ_KEY)||"{}");
   s[y]=Math.max(s[y]||0,n);localStorage.setItem(SEQ_KEY,JSON.stringify(s));}
 function noGoster(){document.getElementById("pno").textContent=aktifNo; inputs.portfoy_no.value=aktifNo;}
