@@ -50,10 +50,11 @@
   .btn-print:active{transform:scale(.96);opacity:.85}
   @media print{
     @page{size:A4 portrait;margin:0}
-    html,body{background:#fff!important}
+    html,body{width:210mm!important;height:297mm!important;margin:0!important;padding:0!important;background:#fff!important;overflow:hidden!important}
     header,.hint,.bar,.toast,.modal{display:none!important}
-    #stage{padding:0!important;display:block!important}
-    #frame{width:100%!important;max-width:none!important;box-shadow:none!important}
+    #stage{width:210mm!important;height:297mm!important;padding:0!important;margin:0!important;display:block!important;overflow:hidden!important}
+    #frame{position:relative!important;width:210mm!important;height:297mm!important;max-width:none!important;aspect-ratio:auto!important;margin:0!important;box-shadow:none!important;overflow:hidden!important}
+    #frame img{width:100%!important;height:100%!important}
     .fld{background:transparent!important;box-shadow:none!important}
     .cbx{background:transparent!important}
   }
